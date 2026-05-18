@@ -1,46 +1,57 @@
-# AI-Native OS — Project Governance Framework
+<div align="center">
+  <h1>🛡️ Agent Forge</h1>
+  <p><b>Agnostic governance framework for AI-assisted software development.</b></p>
+  <p>Control how your AI agents build—without locking into any vendor.</p>
 
-A tool-agnostic governance framework for AI-assisted software development.
+  [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+  [![Framework: Agnostic](https://img.shields.io/badge/Framework-Agnostic-success.svg)](#)
+  [![Governance: 3-Layer](https://img.shields.io/badge/Governance-3--Layer-purple.svg)](#)
 
-This is not an application. It is a portable operating system for controlling how AI agents build software — any software — while maintaining architectural integrity, traceability, and human authority.
+  <h3>✨ <a href="https://danielmaki123.github.io/Agent-Forge/docs/index.html">View the Interactive Visual Guide</a> ✨</h3>
+  <p><i>(To enable this link, go to Settings > Pages in your GitHub Repo and select the `main` branch / `docs` folder)</i></p>
+</div>
 
-## Philosophy
+---
 
-1. **Spec before code.** Contracts define behavior. Code implements contracts.
-2. **Governed autonomy.** Agents operate freely within defined boundaries. They stop at risk.
-3. **Verify, don't trust.** Every task has executable verification. "Done" means checks pass.
-4. **Minimal effective governance.** No file exists unless it prevents a real failure mode.
-5. **Ship first, govern second.** TASK-001 must execute before adding more governance.
+## 🧠 Why Agent Forge?
 
-## Quick Start
+Current AI agent tools (Cursor, Claude, Kimi, Devin) are walled gardens. Agent Forge is the **first tool-agnostic governance kernel** that standardizes how agents operate across your entire monorepo.
 
-1. Copy this directory into your project root.
-2. Edit `PROJECT.yaml` — define your project identity, stack, team.
-3. Edit `contracts/` — define your first API or data contract.
-4. Create your first task in `tasks/TASK-001-foundation.md`.
-5. Run `/continue-roadmap`.
+*   **0% Vendor Lock-in:** Use any tool for any role.
+*   **3-Layer Governance:** Markdown Instructions → YAML Policies → Numerical Kill Switches.
+*   **Backed by Data:** Built on 48 research sources to prevent AI technical debt.
 
-## Directory Structure
+## ⚡ Quick Start
 
+1.  **Clone or copy** this directory into your project root.
+2.  **Configure:** Edit `PROJECT.yaml` — define your project identity, stack, and agent team.
+3.  **Govern:** Edit `policies/` to set boundaries and safety rules.
+4.  **Execute:** Run `/new-task` to create your first task, then `/continue-roadmap`.
+
+## 📁 Architecture
+
+```text
+agent-forge/
+├── AGENTS.md              # 📜 Agent constitution & roles
+├── PROJECT.yaml           # ⚙️ Centralized project config
+├── commands/              # ⚡ Operational shortcuts (/autopilot, /review)
+├── policies/              # 🔒 Enforceable YAML rules (boundaries, safety)
+├── contracts/             # 🤝 API and data contracts
+├── handoffs/              # 📤 Worker handoff documents
+├── reviews/               # 👀 Task review documents
+├── tasks/                 # 📋 Task definitions & verification
+└── templates/             # 🏗️ Reusable system templates
 ```
-├── AGENTS.md              # Agent roles, boundaries, workflow
-├── PROJECT.yaml           # Project identity and configuration
-├── commands/              # Operational shortcut prompts
-├── contracts/             # API and data contracts (source of truth)
-├── decisions/             # Architecture Decision Records (ADRs)
-├── design/                # Design artifacts and references
-├── handoffs/              # Agent handoff documents
-├── policies/              # Enforceable governance rules (YAML)
-├── reviews/               # Task review documents
-├── specs/                 # Domain specifications
-├── tasks/                 # Task definitions with acceptance criteria
-└── templates/             # Reusable templates
-```
 
-## Principles (from industry research, 2025-2026)
+## 🛡️ Kill Switches & Safety
 
-- **Context engineering** over prompt engineering — curate what agents see
-- **Spec-driven development** — specifications are primary artifacts, code is derivative
-- **Governance-as-code** — if a rule isn't enforced by the system, it will be ignored
-- **Observe-Think-Act-Verify** loop — agents self-verify before reporting done
-- **AGENTS.md as portable standard** — tool-agnostic, version-controlled, iterative
+Agent Forge implements "Selective Autonomy" based on research showing that a 10-step agent at 95% accuracy only has a 59.9% system success rate. 
+
+*   **Auto-Stop:** Agents halt if a task exceeds 5 files, 100 lines, or 15 minutes.
+*   **Pre-Mortem:** Every review requires 3 mandatory failure scenarios to counter sycophantic AI behavior.
+*   **Context Compaction:** Handoffs summarize context to prevent LLM memory overflow during `/autopilot`.
+
+---
+<div align="center">
+  <sub>Built with empirical research. Designed for Senior Engineers.</sub>
+</div>
