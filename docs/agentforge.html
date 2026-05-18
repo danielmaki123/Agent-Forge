@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Forge — Guía Visual</title>
+<meta name="description" content="Framework agnóstico de gobernanza para desarrollo asistido por IA. Controla cómo los agentes construyen software.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-glow"></div>
+  <div class="container">
+    <div class="hero-badge">Framework Open Source</div>
+    <h1>Agent <span class="gradient-text">Forge</span></h1>
+    <p class="hero-sub">Gobernanza agnóstica para desarrollo de software asistido por IA.<br>Controla cómo los agentes construyen — sin atarte a ningún vendor.</p>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">30</span><span class="stat-label">Archivos</span></div>
+      <div class="stat"><span class="stat-num">0</span><span class="stat-label">Vendor Lock-in</span></div>
+      <div class="stat"><span class="stat-num">3</span><span class="stat-label">Capas de Gobernanza</span></div>
+      <div class="stat"><span class="stat-num">48</span><span class="stat-label">Fuentes de Investigación</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="section" id="filosofia">
+  <div class="container">
+    <h2 class="section-title">Filosofía Central</h2>
+    <div class="principles-grid">
+      <div class="principle-card">
+        <div class="principle-icon">📋</div>
+        <h3>Especificación antes que código</h3>
+        <p>Los contratos definen el comportamiento. El código implementa contratos. Nunca al revés.</p>
+        <div class="evidence">Codificar sin specs → +41% complejidad de código</div>
+      </div>
+      <div class="principle-card">
+        <div class="principle-icon">🛡️</div>
+        <h3>Autonomía gobernada</h3>
+        <p>Los agentes operan libremente dentro de límites. Se detienen ante el riesgo, no después del daño.</p>
+        <div class="evidence">Gobernanza solo con prompts → 26.67% tasa de violación</div>
+      </div>
+      <div class="principle-card">
+        <div class="principle-icon">✅</div>
+        <h3>Verificar, no confiar</h3>
+        <p>Cada tarea tiene verificación ejecutable. "Terminado" significa que los checks pasan.</p>
+        <div class="evidence">22.7% de problemas de IA persisten en las últimas versiones</div>
+      </div>
+      <div class="principle-card">
+        <div class="principle-icon">⚡</div>
+        <h3>Primero enviar, después gobernar</h3>
+        <p>TASK-001 se ejecuta antes de agregar más gobernanza. Sin parálisis por análisis.</p>
+        <div class="evidence">Máximo 2 ADRs antes de completar la primera tarea</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark" id="flujo">
+  <div class="container">
+    <h2 class="section-title">El Flujo de Trabajo</h2>
+    <p class="section-subtitle">Cada tarea sigue este pipeline. Sin excepciones.</p>
+    <div class="pipeline">
+      <div class="pipe-step"><div class="pipe-dot"></div><div class="pipe-content"><h4>Especificación</h4><p>Definir reglas de dominio y requisitos</p></div></div>
+      <div class="pipe-connector"></div>
+      <div class="pipe-step"><div class="pipe-dot"></div><div class="pipe-content"><h4>Contrato</h4><p>Formas de datos, endpoints, modelos</p></div></div>
+      <div class="pipe-connector"></div>
+      <div class="pipe-step"><div class="pipe-dot"></div><div class="pipe-content"><h4>Tarea</h4><p>≤5 archivos, ≤100 líneas, ≤15 min</p></div></div>
+      <div class="pipe-connector"></div>
+      <div class="pipe-step"><div class="pipe-dot"></div><div class="pipe-content"><h4>Decisión de Worker</h4><p>¿Quién ejecuta? ¿Cuál es el alcance?</p></div></div>
+      <div class="pipe-connector"></div>
+      <div class="pipe-step"><div class="pipe-dot accent"></div><div class="pipe-content"><h4>Plan</h4><p>Delinear enfoque antes de codificar</p></div></div>
+      <div class="pipe-connector"></div>
+      <div class="pipe-step"><div class="pipe-dot accent"></div><div class="pipe-content"><h4>Implementar</h4><p>Código dentro de límites permitidos</p></div></div>
+      <div class="pipe-connector"></div>
+      <div class="pipe-step"><div class="pipe-dot warn"></div><div class="pipe-content"><h4>Verificar</h4><p>Loop OTAV: checks + políticas</p></div></div>
+      <div class="pipe-connector"></div>
+      <div class="pipe-step"><div class="pipe-dot"></div><div class="pipe-content"><h4>Handoff</h4><p>Documentar cambios + resumen de contexto</p></div></div>
+      <div class="pipe-connector"></div>
+      <div class="pipe-step"><div class="pipe-dot warn"></div><div class="pipe-content"><h4>Review + Pre-Mortem</h4><p>3 escenarios de falla obligatorios</p></div></div>
+      <div class="pipe-connector"></div>
+      <div class="pipe-step"><div class="pipe-dot success"></div><div class="pipe-content"><h4>Veredicto</h4><p>merge | fix | split | blocked</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="agentes">
+  <div class="container">
+    <h2 class="section-title">Roles de Agentes</h2>
+    <p class="section-subtitle">Roles abstractos, no nombres de vendor. Mapea cualquier herramienta a cualquier rol.</p>
+    <div class="agents-grid">
+      <div class="agent-card orchestrator">
+        <div class="agent-header"><span class="agent-emoji">🧠</span><h3>Orquestador</h3></div>
+        <div class="agent-does"><h4>Hace</h4><ul><li>Planifica y revisa</li><li>Enforce arquitectura</li><li>Resuelve bloqueos</li><li>Emite veredictos</li></ul></div>
+        <div class="agent-doesnt"><h4>NO Hace</h4><ul><li>Implementar código silenciosamente</li><li>Reemplazar workers especializados</li></ul></div>
+        <div class="agent-tools">Herramientas: Codex, Claude Code, Cursor Composer…</div>
+      </div>
+      <div class="agent-card backend">
+        <div class="agent-header"><span class="agent-emoji">⚙️</span><h3>Worker Backend</h3></div>
+        <div class="agent-does"><h4>Hace</h4><ul><li>Lógica de dominio y APIs</li><li>Base de datos y validación</li><li>Tests</li><li>Server actions</li></ul></div>
+        <div class="agent-doesnt"><h4>NO Hace</h4><ul><li>Modificar UI</li><li>Inventar contratos</li><li>Agregar deps sin aprobación</li></ul></div>
+        <div class="agent-tools">Herramientas: Kimi CLI, Claude Code, Cursor…</div>
+      </div>
+      <div class="agent-card frontend">
+        <div class="agent-header"><span class="agent-emoji">🎨</span><h3>Worker Frontend</h3></div>
+        <div class="agent-does"><h4>Hace</h4><ul><li>Componentes UI y estilos</li><li>Lógica del lado cliente</li><li>Funciones PWA</li><li>Integración de diseño</li></ul></div>
+        <div class="agent-doesnt"><h4>NO Hace</h4><ul><li>Inventar APIs</li><li>Mover lógica de negocio al cliente</li><li>Cambiar modelos de datos</li></ul></div>
+        <div class="agent-tools">Herramientas: Gemini CLI, Cursor, v0…</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark" id="gobernanza">
+  <div class="container">
+    <h2 class="section-title">3 Capas de Gobernanza</h2>
+    <p class="section-subtitle">De sugerencias a enforcement. Cada capa reduce las violaciones.</p>
+    <div class="gov-layers">
+      <div class="gov-layer layer-1">
+        <div class="gov-layer-header"><span class="layer-num">1</span><h3>Instrucciones Markdown</h3><span class="violation-badge bad">~26-67% violaciones</span></div>
+        <p>AGENTS.md — constitución de agentes legible por humanos con roles, flujo y reglas de seguridad.</p>
+        <div class="gov-files"><code>AGENTS.md</code> <code>README.md</code></div>
+      </div>
+      <div class="gov-arrow">↓ más fuerte ↓</div>
+      <div class="gov-layer layer-2">
+        <div class="gov-layer-header"><span class="layer-num">2</span><h3>Políticas YAML</h3><span class="violation-badge medium">~5-10% violaciones</span></div>
+        <p>Reglas parseables por máquina. CI/CD valida commits. Límites de archivos, gates de seguridad, requisitos de calidad.</p>
+        <div class="gov-files"><code>policies/boundaries.yaml</code> <code>policies/safety.yaml</code> <code>policies/quality.yaml</code></div>
+      </div>
+      <div class="gov-arrow">↓ la más fuerte ↓</div>
+      <div class="gov-layer layer-3">
+        <div class="gov-layer-header"><span class="layer-num">3</span><h3>Quality Gates</h3><span class="violation-badge good">~0% violaciones</span></div>
+        <p>Kill switches numéricos en PROJECT.yaml. Límites duros: máx 5 archivos, 100 líneas, 15 min, 3 reintentos.</p>
+        <div class="gov-files"><code>PROJECT.yaml → quality_gates</code> <code>PROJECT.yaml → checks</code></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="seguridad">
+  <div class="container">
+    <h2 class="section-title">Kill Switches y Seguridad</h2>
+    <p class="section-subtitle">Investigación: agente de 10 pasos a 95% de precisión → solo 59.9% de éxito del sistema.</p>
+    <div class="safety-grid">
+      <div class="safety-card danger">
+        <h4>🔴 Prohibido Siempre</h4>
+        <ul><li>Deploy a producción</li><li>Commitear secretos</li><li>Migrations sin aprobación</li><li>Eliminar tests para pasar checks</li><li>Borrar datos de producción</li></ul>
+      </div>
+      <div class="safety-card warning">
+        <h4>🟡 Requiere Aprobación</h4>
+        <ul><li>Agregar dependencias</li><li>Modificar esquema de BD</li><li>Cambiar arquitectura</li><li>Escrituras a servicios externos</li><li>Modificar auth/seguridad</li></ul>
+      </div>
+      <div class="safety-card stop">
+        <h4>⛔ Auto-Stop</h4>
+        <ul><li>Tarea excede 5 archivos</li><li>Tarea excede 100 líneas</li><li>Agente corriendo &gt;15 minutos</li><li>3 fallos consecutivos</li><li>Incertidumbre sobre impacto</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark" id="comandos">
+  <div class="container">
+    <h2 class="section-title">Comandos</h2>
+    <p class="section-subtitle">Atajos operativos. Escribe el comando, el agente ejecuta el protocolo.</p>
+    <div class="commands-grid">
+      <div class="cmd-card"><code>/continue-roadmap</code><p>Ejecutar la siguiente tarea pendiente</p></div>
+      <div class="cmd-card"><code>/autopilot</code><p>Ejecutar hasta 3 tareas con compactación de contexto</p></div>
+      <div class="cmd-card"><code>/worker-decision</code><p>Decidir quién ejecuta + plan de implementación</p></div>
+      <div class="cmd-card"><code>/review</code><p>Revisar tarea contra contratos + pre-mortem</p></div>
+      <div class="cmd-card"><code>/red-team</code><p>Revisión adversarial — encontrar problemas, no confirmar calidad</p></div>
+      <div class="cmd-card"><code>/status</code><p>Reconstruir estado desde el repo, no desde memoria del chat</p></div>
+      <div class="cmd-card"><code>/checks</code><p>Ejecutar todas las verificaciones de PROJECT.yaml</p></div>
+      <div class="cmd-card"><code>/stop</code><p>Parada de emergencia con evaluación de riesgo</p></div>
+      <div class="cmd-card"><code>/resolve-blocker</code><p>Analizar bloqueo sin implementar código</p></div>
+      <div class="cmd-card"><code>/new-task</code><p>Crear tarea estructurada desde template</p></div>
+      <div class="cmd-card"><code>/new-adr</code><p>Crear registro de decisión arquitectónica</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="estructura">
+  <div class="container">
+    <h2 class="section-title">Estructura del Proyecto</h2>
+    <div class="tree">
+      <div class="tree-item root"><span class="folder">📁</span> agent-forge/</div>
+      <div class="tree-item l1 doc"><span class="file">📄</span> AGENTS.md <span class="desc">— Constitución de agentes (~140 líneas)</span></div>
+      <div class="tree-item l1 doc"><span class="file">⚙️</span> PROJECT.yaml <span class="desc">— Toda la config en un archivo</span></div>
+      <div class="tree-item l1"><span class="folder">📁</span> commands/ <span class="desc">— 11 atajos operativos</span></div>
+      <div class="tree-item l1"><span class="folder">📁</span> contracts/ <span class="desc">— Contratos de API y datos</span></div>
+      <div class="tree-item l1"><span class="folder">📁</span> decisions/ <span class="desc">— Registros de Decisiones Arquitectónicas</span></div>
+      <div class="tree-item l1"><span class="folder">📁</span> design/ <span class="desc">— Artefactos de diseño</span></div>
+      <div class="tree-item l1"><span class="folder">📁</span> handoffs/ <span class="desc">— Documentos de handoff de workers</span></div>
+      <div class="tree-item l1 highlight"><span class="folder">🔒</span> policies/ <span class="desc">— Reglas YAML ejecutables</span></div>
+      <div class="tree-item l2"><span class="file">📄</span> boundaries.yaml <span class="desc">— Acceso a archivos por rol</span></div>
+      <div class="tree-item l2"><span class="file">📄</span> safety.yaml <span class="desc">— Kill switches y gates de aprobación</span></div>
+      <div class="tree-item l2"><span class="file">📄</span> quality.yaml <span class="desc">— Logging, cobertura, pre-mortem</span></div>
+      <div class="tree-item l1"><span class="folder">📁</span> reviews/ <span class="desc">— Documentos de revisión de tareas</span></div>
+      <div class="tree-item l1"><span class="folder">📁</span> specs/ <span class="desc">— Especificaciones de dominio</span></div>
+      <div class="tree-item l1"><span class="folder">📁</span> tasks/ <span class="desc">— Definiciones de tareas</span></div>
+      <div class="tree-item l1"><span class="folder">📁</span> templates/ <span class="desc">— 5 templates reutilizables</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark" id="investigacion">
+  <div class="container">
+    <h2 class="section-title">Respaldado por Investigación</h2>
+    <p class="section-subtitle">Cada decisión de diseño tiene evidencia empírica. No opiniones.</p>
+    <div class="research-grid">
+      <div class="research-card"><div class="research-num">67%</div><p>del tiempo, los agentes ignoran instrucciones en archivos &gt;4K tokens</p></div>
+      <div class="research-card"><div class="research-num">26.67%</div><p>tasa de violación con gobernanza solo de prompts</p></div>
+      <div class="research-card"><div class="research-num">41%</div><p>aumento en complejidad de código por codificar sin specs</p></div>
+      <div class="research-card"><div class="research-num">59.9%</div><p>éxito del sistema para agente de 10 pasos a 95% precisión</p></div>
+      <div class="research-card"><div class="research-num">89.3%</div><p>de la deuda técnica de IA son code smells</p></div>
+      <div class="research-card"><div class="research-num">72%</div><p>de proyectos enterprise usan multi-agente (2025-26)</p></div>
+      <div class="research-card"><div class="research-num">&lt;0.1ms</div><p>enforcement con OPA vs llamada LLM (10,000x más rápido)</p></div>
+      <div class="research-card"><div class="research-num">ρ=-0.668</div><p>correlación: sesiones más largas → más fallos</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>Agent Forge — Gobernanza agnóstica para desarrollo asistido por IA</p>
+    <p class="footer-small">Construido con datos de 48 fuentes de investigación. Zero vendor lock-in.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

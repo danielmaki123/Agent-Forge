@@ -1,0 +1,49 @@
+# quality.yaml — Code Quality & Observability Policies
+# Research: agents ignore logging instructions 67% of the time.
+# These rules shift from "please log" to "CI blocks without logs."
+
+# Minimum quality gates — CI/CD must validate these
+quality_gates:
+  # All checks from PROJECT.yaml must pass
+  all_checks_pass: true
+
+  # Code must not reduce test coverage
+  test_coverage:
+    enforce: false  # set true when coverage tooling is configured
+    minimum_percent: 70
+    fail_on_decrease: true
+
+  # Logging requirements
+  logging:
+    enforce: false  # set true when structured logger is configured
+    # Every new API endpoint must include:
+    required_in_endpoints:
+      - "request received log"
+      - "error handling with context"
+      - "response status log"
+    # Every new module must include:
+    required_in_modules:
+      - "operation start/end logs"
+      - "error logs with stack traces"
+
+  # Type safety
+  type_safety:
+    no_any_types: false  # set true for strict TypeScript projects
+    no_type_assertions: false
+
+# Code review requirements
+review_requirements:
+  # Minimum items the review must verify
+  mandatory_checks:
+    - "scope compliance"
+    - "contract compliance"
+    - "architecture compliance"
+    - "no unapproved dependencies"
+    - "no hardcoded secrets"
+    - "verification checks pass"
+
+  # Pre-mortem: reviewer must identify potential failures
+  pre_mortem:
+    enabled: true
+    min_failure_scenarios: 3
+    prompt: "List 3 ways this implementation could break the system or violate the architecture."

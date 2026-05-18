@@ -1,0 +1,54 @@
+# boundaries.yaml — File Access & Module Ownership Policies
+# These rules are ENFORCED, not suggested.
+# Agents must read this before modifying any file.
+# CI/CD should validate commits against these rules.
+
+# Module ownership: which role can modify which paths
+module_ownership:
+  # Example:
+  # backend_worker:
+  #   allowed:
+  #     - "src/modules/*/domain/**"
+  #     - "src/modules/*/features/**"
+  #     - "src/infrastructure/**"
+  #     - "prisma/**"
+  #   forbidden:
+  #     - "src/app/**"
+  #     - "src/shared/ui/**"
+  #     - "public/**"
+  # frontend_worker:
+  #   allowed:
+  #     - "src/app/**"
+  #     - "src/shared/ui/**"
+  #     - "public/**"
+  #   forbidden:
+  #     - "src/modules/*/domain/**"
+  #     - "prisma/**"
+  #     - "src/infrastructure/**"
+  # orchestrator:
+  #   allowed:
+  #     - "tasks/**"
+  #     - "contracts/**"
+  #     - "decisions/**"
+  #     - "reviews/**"
+  #     - "handoffs/**"
+  #     - "specs/**"
+  #   forbidden:
+  #     - "src/**"
+
+# Protected files: require explicit approval to modify
+protected_files:
+  - "PROJECT.yaml"
+  - "AGENTS.md"
+  - "policies/**"
+  - ".env*"
+  - "package.json"  # dependency changes need approval
+
+# Forbidden patterns: never allow these in any commit
+forbidden_patterns:
+  - pattern: "process.env\\."
+    reason: "Direct env access. Use config module."
+    exceptions: ["src/shared/config/**"]
+  # - pattern: "console\\.log"
+  #   reason: "Use structured logger instead."
+  #   exceptions: ["scripts/**"]

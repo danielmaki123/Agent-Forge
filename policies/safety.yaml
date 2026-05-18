@@ -1,0 +1,56 @@
+# safety.yaml — Escalation & Approval Policies
+# These rules override any agent instruction.
+# If a condition is met, the agent MUST stop.
+
+# Actions that require explicit human approval before execution
+approval_required:
+  - action: "add_dependency"
+    description: "Adding any new npm/pip/cargo package"
+    approval_type: "human"
+
+  - action: "modify_schema"
+    description: "Changing database schema or migrations"
+    approval_type: "human"
+
+  - action: "modify_architecture"
+    description: "Creating new modules, changing patterns, new ADR needed"
+    approval_type: "human"
+
+  - action: "external_service_mutation"
+    description: "Any write operation to external services (DB, API, storage)"
+    approval_type: "human"
+
+  - action: "modify_auth"
+    description: "Changing authentication, authorization, or security rules"
+    approval_type: "human"
+
+  - action: "deploy"
+    description: "Any deployment action (preview or production)"
+    approval_type: "human"
+
+# Actions that are NEVER allowed regardless of context
+forbidden_always:
+  - "commit secrets or credentials to repository"
+  - "deploy to production"
+  - "delete production data"
+  - "run migrations on production"
+  - "bypass test failures to merge"
+  - "remove existing tests to pass checks"
+  - "access systems outside project scope"
+
+# Kill switch triggers — agent must immediately stop
+kill_switch:
+  max_files_per_task: 5
+  max_lines_per_task: 100
+  max_wall_clock_minutes: 15
+  max_consecutive_failures: 3
+  # max_token_budget: 50000  # uncomment when tooling supports
+
+# Compound error reset points
+# At these points, human review resets the compound error probability
+human_checkpoints:
+  - "after every task completion (review step)"
+  - "before any deployment"
+  - "before any database mutation"
+  - "when agent reports uncertainty"
+  - "when agent has retried 3+ times"

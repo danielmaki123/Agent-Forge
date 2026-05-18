@@ -1,0 +1,106 @@
+# ============================================================
+# PROJECT.yaml — Project Identity & Configuration
+# ============================================================
+# This is the single source of project-level configuration.
+# Agents read this file to understand what they're building.
+# ============================================================
+
+project:
+  name: "my-project"
+  type: "web-app"  # web-app | api | cli | library | mobile | monorepo
+  description: "Brief description of what this project does."
+  domain: "general"  # e-commerce | hospitality | fintech | saas | internal-tool | etc.
+
+# --- Stack ---
+stack:
+  language: "typescript"
+  runtime: "node"
+  framework: "next"  # next | vite | express | fastapi | django | rails | none
+  styling: "tailwind"  # tailwind | css-modules | styled-components | vanilla | none
+  database: "postgresql"  # postgresql | mysql | sqlite | mongodb | none
+  orm: "prisma"  # prisma | drizzle | typeorm | sequelize | sqlalchemy | none
+  package_manager: "npm"  # npm | pnpm | yarn | bun | pip | cargo
+  test_framework: "vitest"  # vitest | jest | pytest | cargo-test | none
+
+# --- Verification Commands ---
+# These commands define "done". Agents run them after every task.
+checks:
+  lint: "npm run lint"
+  typecheck: "npm run typecheck"
+  test: "npm run test"
+  build: "npm run build"
+  # Add project-specific checks below:
+  # schema: "npx prisma generate"
+  # migrate: "npx prisma migrate dev --name check"
+
+# --- Quality Gates ---
+# Enforceable standards. See policies/quality.yaml for full definitions.
+# Research: agents ignore natural-language logging instructions 67% of the time.
+# These gates shift enforcement from "please do" to "CI blocks if not done."
+quality_gates:
+  pre_mortem_required: true       # reviewer must list 3 failure scenarios
+  max_files_per_task: 5           # tasks exceeding this must be split
+  max_lines_per_task: 100         # tasks exceeding this must be split
+  max_agent_minutes: 15           # kill switch: stop after this duration
+  max_consecutive_failures: 3     # kill switch: stop after N retries
+  # test_coverage_minimum: 70    # uncomment when coverage tooling exists
+  # logging_required: true       # uncomment when structured logger exists
+
+# --- Agent Team ---
+# Define abstract roles, not vendor names.
+# Map your actual tools to roles.
+agents:
+  orchestrator:
+    role: "Plans, reviews, enforces architecture. Does not implement silently."
+    tools: []  # e.g., ["codex", "claude-code", "cursor-composer"]
+  backend_worker:
+    role: "Implements domain logic, APIs, database, validation, tests."
+    tools: []  # e.g., ["kimi-cli", "claude-code", "cursor"]
+  frontend_worker:
+    role: "Implements UI, components, styling, PWA, client-side logic."
+    tools: []  # e.g., ["gemini-cli", "cursor", "v0"]
+  design_tool:
+    role: "UI ideation, layout exploration, component design."
+    status: "none"  # none | read-only | verified
+    tools: []  # e.g., ["stitch-mcp", "figma-mcp", "v0"]
+
+# --- Deployment ---
+deployment:
+  preview:
+    target: "none"  # vercel | netlify | cloudflare-pages | docker | none
+    project_id: ""
+    branch: "staging"
+  production:
+    target: "none"  # docker | easypanel | railway | fly | aws | none
+    strategy: "not-yet"  # not-yet | manual | ci-cd
+
+# --- Safety ---
+safety:
+  forbidden_actions:
+    - "deploy to production without approval"
+    - "run migrations without approval"
+    - "commit secrets to repository"
+    - "add dependencies without approval"
+    - "modify architecture without ADR"
+    - "push to main without review"
+  escalation_triggers:
+    - "contract conflict"
+    - "architecture ambiguity"
+    - "external service mutation"
+    - "security-sensitive change"
+    - "data loss risk"
+
+# --- Integrations ---
+# External services the project uses. Agents read this for boundaries.
+integrations: {}
+  # supabase:
+  #   mode: "read-only"  # read-only | managed
+  #   allowed: ["inspect", "diagnostics"]
+  #   forbidden: ["mutations", "migrations", "db-push"]
+  # n8n:
+  #   mode: "external-workflows"
+  #   allowed: ["notifications", "webhooks"]
+  #   forbidden: ["domain-logic", "pricing", "order-state"]
+  # linear:
+  #   mode: "tracking-only"
+  #   source_of_truth: "tasks/"
